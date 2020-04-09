@@ -36,7 +36,7 @@ function compileTheContract() {
 
 
 async function deployTheContract(compiledContract) {
-    const privateKey = "0x7EB2255581AED1C929A291B65BC3A37FB70BA8C6783FFFABE18D8C6EC5DCFFC1";
+    let privateKey = "0x7EB2255581AED1C929A291B65BC3A37FB70BA8C6783FFFABE18D8C6EC5DCFFC1";
     web3.eth.accounts.wallet.add(privateKey);
     const ABI = compiledContract["abi"];
     const BYTECODE = "0x" + compiledContract["evm"]["bytecode"]["object"];
@@ -52,7 +52,7 @@ async function deployTheContract(compiledContract) {
         .deploy()
         .send()
         .then(contractInstance => {
-            console.log("Contract created at " + contractInstance.options.address);
+            //console.log("Contract created at " + contractInstance.options.address);
             return contractInstance;
         });
     //=====================================================================
@@ -79,7 +79,22 @@ async function deployTheContract(compiledContract) {
             console.log("Transaction Information:");
             console.log(transaction);
         });
-    //return myobj;
+
+    // ===================== THIS DID NOT WORK.... ==================
+    // console.log("Add non-owner");
+    // privateKey = "0x3FBF70C9FD7BE8835A535836B4F42D117F73B6055ED62353D8DD883A14EB54AE";
+    // compileTheContract();
+    // web3.eth.accounts.wallet.add(privateKey);
+    // ==============================================================
+
+    const factIndex = 0;
+    await contract.methods.getFact(factIndex).call().then((result) => {
+        console.log(`Fact ${factIndex}: ${result}`);
+    });
+
+    await contract.methods.count().call().then((result) => {
+        console.log(`Total recored facts: ${result}`);
+    });
 }
 
 let compiledContract = compileTheContract();
