@@ -1,0 +1,24 @@
+{
+  "name": "mi4-exercise15",
+  "version": "1.0.0",
+  "description": "Smart Contracts using Web3.js and Infura",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denismp/mi4-exercise15.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denismp/mi4-exercise15/issues"
+  },
+  "homepage": "https://github.com/denismp/mi4-exercise15#readme",
+  "dependencies": {
+    "solc": "^0.6.4",
+    "web3": "^1.2.6"
+  }
+}
